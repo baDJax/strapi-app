@@ -11,13 +11,15 @@ import Form from "../../components/Form";
 
 const HomePage = () => {
   return (
-    <Box background="neutral100">
+    <Box padding={0} background="neutral100">
       <BaseHeaderLayout
         primaryAction={<FetchBtn />}
         title="Trigger a deploy on the Jenkins"
         as="h2"
       />
-      <Form />
+      <Box padding={0} paddingLeft={10} paddingRight={10}>
+        <Form />
+      </Box>
     </Box>
   );
 };

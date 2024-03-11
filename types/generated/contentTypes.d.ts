@@ -368,6 +368,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     singularName: 'category';
     pluralName: 'categories';
     displayName: 'Category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -403,12 +404,14 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
     singularName: 'restaurant';
     pluralName: 'restaurants';
     displayName: 'Restaurant';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Name: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.Blocks;
     categories: Attribute.Relation<
       'api::restaurant.restaurant',
       'manyToMany',
