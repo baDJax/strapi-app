@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "user_inputs",
+  "info": {
+    "singularName": "user-input",
+    "pluralName": "user-inputs",
+    "displayName": "User Input"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": false
+    }
+  },
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "authentication": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

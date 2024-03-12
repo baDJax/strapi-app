@@ -16,7 +16,7 @@ const FetchBtn = ({ status }) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:1337/api/user-datas");
+      const response = await fetch("http://localhost:1337/api/user-input");
       const data = await response.json();
       setWebhookData(data.data);
     } catch (error) {

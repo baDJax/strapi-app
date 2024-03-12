@@ -1,12 +1,12 @@
 import { Box, Button, TextInput } from "@strapi/design-system";
 import { useState } from "react";
 
-const Form = ({handleStatus}) => {
+const Form = ({ handleStatus }) => {
   const [userInput, setUserInput] = useState({ url: "", authentication: "" });
   const handleClick = () => {
     if (userInput.url && userInput.authentication) {
-      fetch("http://localhost:1337/api/user-datas", {
-        method: "POST",
+      fetch("http://localhost:1337/api/user-input", {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: userInput }),
       }).then((response) => handleStatus(response.status));
