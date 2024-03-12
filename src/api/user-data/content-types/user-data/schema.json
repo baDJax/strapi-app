@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_datas",
+  "info": {
+    "singularName": "user-data",
+    "pluralName": "user-datas",
+    "displayName": "User Data"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": false
+    }
+  },
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "authentication": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

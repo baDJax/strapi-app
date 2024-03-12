@@ -1,14 +1,28 @@
 import { Box, Button, TextInput } from "@strapi/design-system";
 import { useState } from "react";
 
-const Form = () => {
+const Form = ({handleStatus}) => {
   const [userInput, setUserInput] = useState({ url: "", authentication: "" });
   const handleClick = () => {
-    console.log(userInput);
+    if (userInput.url && userInput.authentication) {
+      fetch("http://localhost:1337/api/user-datas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: userInput }),
+      }).then((response) => handleStatus(response.status));
+      setUserInput({ url: "", authentication: "" });
+    } else {
+      try {
+        handleStatus(0);
+        throw new Error("Field is empty");
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
   return (
     <Box>
-      <form action="get">
+      <form>
         <TextInput
           placeholder="Enter the webhook url"
           label="Enter the URL"

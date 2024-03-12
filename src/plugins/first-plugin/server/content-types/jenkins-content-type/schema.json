@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jenkins_content_types",
+  "info": {
+    "singularName": "jenkins-content-type",
+    "pluralName": "jenkins-content-types",
+    "displayName": "Jenkins Content Type"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
