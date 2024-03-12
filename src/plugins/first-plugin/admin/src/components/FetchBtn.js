@@ -4,39 +4,23 @@ import {
   ModalLayout,
   ModalBody,
   ModalHeader,
-  ModalFooter,
   Typography,
-  Box,
 } from "@strapi/design-system";
 import { useEffect, useState } from "react";
 
-const FetchBtn = ({ status }) => {
+const FetchBtn = ({ status, isValid }) => {
   const [isClicked, setIsClicked] = useState(false);
-  const [webhookData, setWebhookData] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:1337/api/user-input");
-      const data = await response.json();
-      setWebhookData(data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  
 
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
 
-  useEffect(() => {
-    if (isClicked) {
-      fetchData();
-    }
-  }, [isClicked]);
 
   return (
     <>
-      <Button onClick={handleClick} variant="primary" startIcon={<Rocket />}>
+      <Button disabled={isValid ? false : true} variant={isValid ? 'primary':''} onClick={handleClick} startIcon={<Rocket />}>
         Deploy
       </Button>
       {isClicked && (
@@ -58,7 +42,7 @@ const FetchBtn = ({ status }) => {
             {isClicked
               ? status
                 ? `Status Code: ${status}`
-                : "No request sent"
+                : "Webhook URL missing"
               : ""}
           </ModalBody>
         </ModalLayout>
