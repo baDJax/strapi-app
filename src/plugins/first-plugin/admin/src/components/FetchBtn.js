@@ -8,19 +8,52 @@ import {
 } from "@strapi/design-system";
 import { useEffect, useState } from "react";
 
-const FetchBtn = ({ status, isValid }) => {
+const FetchBtn = ({ isValid, count }) => {
   const [isClicked, setIsClicked] = useState(false);
+  const [webhookData, setWebhookData] = useState([]);
+  const [status, setStatus] = useState(0);
 
-  
+  const fetchData = () => {
+    fetch("http://localhost:1337/api/user-input")
+      .then((res) => res.json())
+      .then((data) => setWebhookData(data));
+  };
+
+  const post = async () => {
+    try {
+      const response = await fetch(webhookData.data.attributes.url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: webhookData.data.attributes.authentication,
+        },
+        body: JSON.stringify({
+          data: "This is a placeholder data",
+        }),
+      });
+      setStatus(response.status);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleClick = () => {
     setIsClicked(!isClicked);
+    post();
   };
 
+  useEffect(() => {
+    fetchData();
+  }, [count]);
 
   return (
     <>
-      <Button disabled={isValid ? false : true} variant={isValid ? 'primary':''} onClick={handleClick} startIcon={<Rocket />}>
+      <Button
+        disabled={isValid ? false : true}
+        variant={isValid ? "primary" : ""}
+        onClick={handleClick}
+        startIcon={<Rocket />}
+      >
         Deploy
       </Button>
       {isClicked && (

@@ -10,23 +10,24 @@ import FetchBtn from "../../components/FetchBtn";
 import Form from "../../components/Form";
 
 const HomePage = () => {
-  const [status, setStatus] = useState(0);
   const [isValid, setIsValid] = useState(false);
-  const handleStatus = (sta) => {
-    setStatus(sta)
-  }
-  const handleValid =(val)=>{
-    setIsValid(val)
-  }
+  const [count, setCount] = useState(0);
+  
+  const handleValid = (val) => {
+    setIsValid(val);
+  };
+  const fetchCount = (c) => {
+    setCount(c);
+  };
   return (
     <Box padding={0} background="neutral100">
       <BaseHeaderLayout
-        primaryAction={<FetchBtn isValid={isValid} status={status} />}
+        primaryAction={<FetchBtn count={count} isValid={isValid} />}
         title="Trigger a deploy"
         as="h2"
       />
       <Box padding={0} paddingLeft={10} paddingRight={10}>
-        <Form handleStatus={handleStatus} handleValid={handleValid} />
+        <Form fetchCount={fetchCount} handleValid={handleValid} />
       </Box>
     </Box>
   );
