@@ -10,11 +10,11 @@ const Form = ({ handleValid, fetchCount }) => {
 
   useEffect(() => {
     handleValid(isValid);
-    fetchCount(count)
-  }, [isValid,count]);
+    fetchCount(count);
+  }, [isValid, count]);
 
   const handleClick = () => {
-    if (userInput.url.trim() && userInput.authentication.trim()) {
+    if (userInput.url.trim()) {
       fetch("http://localhost:1337/api/user-input", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -35,10 +35,12 @@ const Form = ({ handleValid, fetchCount }) => {
       }
     }
   };
+
   return (
     <Box>
       <form>
         <TextInput
+          required
           placeholder="Enter the webhook url"
           error={inputError ? "Please enter a webhook url" : undefined}
           type="text"

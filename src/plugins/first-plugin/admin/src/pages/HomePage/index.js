@@ -20,7 +20,7 @@ const HomePage = () => {
     setCount(c);
   };
   return (
-    <Box padding={0} background="neutral100">
+    <Box background="neutral100">
       <BaseHeaderLayout
         primaryAction={<FetchBtn count={count} isValid={isValid} />}
         title="Trigger a deploy"

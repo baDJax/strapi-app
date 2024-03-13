@@ -25,7 +25,7 @@ const FetchBtn = ({ isValid, count }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: webhookData.data.attributes.authentication,
+          "Authorization": webhookData.data.attributes.authentication,
         },
         body: JSON.stringify({
           data: "This is a placeholder data",
@@ -50,7 +50,7 @@ const FetchBtn = ({ isValid, count }) => {
     <>
       <Button
         disabled={isValid ? false : true}
-        variant={isValid ? "primary" : ""}
+        variant={isValid && "primary"}
         onClick={handleClick}
         startIcon={<Rocket />}
       >
@@ -72,11 +72,7 @@ const FetchBtn = ({ isValid, count }) => {
             </Typography>
           </ModalHeader>
           <ModalBody>
-            {isClicked
-              ? status
-                ? `Status Code: ${status}`
-                : "Webhook URL missing"
-              : ""}
+            {status ? `Status Code: ${status}` : "Webhook URL missing"}
           </ModalBody>
         </ModalLayout>
       )}
