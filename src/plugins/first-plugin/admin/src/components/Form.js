@@ -15,7 +15,7 @@ const Form = ({ handleValid, fetchCount }) => {
 
   const handleClick = () => {
     if (userInput.url.trim()) {
-      fetch("http://localhost:1337/api/user-input", {
+      fetch("/api/user-input", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: userInput }),

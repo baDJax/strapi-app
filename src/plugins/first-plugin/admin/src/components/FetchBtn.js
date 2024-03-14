@@ -14,7 +14,7 @@ const FetchBtn = ({ isValid, count }) => {
   const [status, setStatus] = useState(0);
 
   const fetchData = () => {
-    fetch("http://localhost:1337/api/user-input")
+    fetch("/api/user-input")
       .then((res) => res.json())
       .then((data) => setWebhookData(data));
   };
