@@ -14,7 +14,7 @@ const FetchBtn = ({ isValid, count }) => {
   const [status, setStatus] = useState(0);
 
   const fetchData = () => {
-    fetch("/api/user-input")
+    fetch(`/api/deploy`)
       .then((res) => res.json())
       .then((data) => setWebhookData(data));
   };
@@ -25,10 +25,10 @@ const FetchBtn = ({ isValid, count }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": webhookData.data.attributes.authentication,
+          Authorization: webhookData.data.attributes.authentication,
         },
         body: JSON.stringify({
-          data: "This is a placeholder data",
+          body: "This is a placeholder for the post data",
         }),
       });
       setStatus(response.status);

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * user-input router
+ * deploy router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::user-input.user-input');
+module.exports = createCoreRouter('api::deploy.deploy');

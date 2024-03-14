@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * user-data controller
+ * deploy controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::user-data.user-data');
+module.exports = createCoreController('api::deploy.deploy');
